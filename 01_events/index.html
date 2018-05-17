@@ -10,12 +10,44 @@
     <li><img src="images/ylw.gif" alt="yellow"></li>
     <li><img src="images/org.gif" alt="orange"></li>
     <li><img src="images/ppl.gif" alt="purple"></li>
-    <li><img src="images/blu.gif" alt="blue"></li>
-    <li><img src="images/pnk.gif" alt="pink"></li>
-    <li><img src="images/grn.gif" alt="green"></li>
+    <li><img src="images/blu.gif" alt="blue" id="blue"></li>
+    <li><img src="images/pnk.gif" alt="pink" onclick="alert('Pushed pink')"></li>
+    <li><img src="images/grn.gif" alt="green" id="green"></li>
     <li><img src="images/ygr.gif" alt="ygreen"></li>
     <li><img src="images/gry.gif" alt="gray"></li>
     <li><img src="images/red.gif" alt="red"></li>
   </ul>
+  <script type="text/javascript">
+    //Types of event registration
+    /*
+
+    1) Using tag attribute
+    2) Using dot notation
+    3) Using addEventListener()
+
+    */
+
+    document.getElementById("blue").onclick=function(){
+      alert("Pushed blue");
+    } // Attach using dot notation, add function literal
+
+    // Since IE8 doesn't support addEventListener, you can use this conditional to check if the browser window has the addEventListener method available
+
+    if(window.addEventListener) {
+
+      document.getElementById("green").addEventListener("click", function(){
+        alert("Clicked on Green");
+      });
+      console.log("Window has add event listener");
+
+    } else if (window.attachEvent) {
+      document.getElementById("green").attachEvent("onclick", function(){
+          alert("Clicked on Green");
+          console.log("Window has attach event listener");
+      });
+    }
+
+
+  </script>
 </body>
 </html>
