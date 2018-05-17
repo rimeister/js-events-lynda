@@ -6,12 +6,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <ul>
+  <ul id="grid">
     <li><img src="images/ylw.gif" alt="yellow"></li>
     <li><img src="images/org.gif" alt="orange"></li>
     <li><img src="images/ppl.gif" alt="purple"></li>
     <li><img src="images/blu.gif" alt="blue" id="blue"></li>
-    <li><img src="images/pnk.gif" alt="pink" onclick="alert('Pushed pink')"></li>
+    <li><img src="images/pnk.gif" alt="pink"></li>
     <li><img src="images/grn.gif" alt="green" id="green"></li>
     <li><img src="images/ygr.gif" alt="ygreen"></li>
     <li><img src="images/gry.gif" alt="gray"></li>
@@ -27,6 +27,8 @@
 
     */
 
+    /*
+
     document.getElementById("blue").onclick=function(){
       alert("Pushed blue");
     } // Attach using dot notation, add function literal
@@ -35,10 +37,11 @@
 
     if(window.addEventListener) {
 
-      document.getElementById("green").addEventListener("click", function(){
+      document.getElementById("green").addEventListener("click", function(e){ // Browser passes back an object with the event info
+        // has e.type, x/y coords, timestamp, etc.
         alert("Clicked on Green");
+        console.log(e);
       });
-      console.log("Window has add event listener");
 
     } else if (window.attachEvent) {
       document.getElementById("green").attachEvent("onclick", function(){
@@ -46,7 +49,22 @@
           console.log("Window has attach event listener");
       });
     }
+    */
+    // Here's a supposed Rock Solid add event strategy: https://javascriptsource.com/rock-solid-addevent/
 
+    // event propagation: An element can capture childs' events
+
+    document.getElementById("grid").addEventListener('click', function(e){
+      console.log("Clicked the UL");
+    },false);
+
+    document.getElementById("green").addEventListener('click', function(e){
+      console.log(e.toElement.alt);
+    },false); // 'false' determines whether you capture the event in the capturing phase or the bubbling phase
+
+    // Capture phase: Captures the event on parent, then child, then sub-child
+    // vs.
+    // Bubble phase: Captures the event on the element click, then parent, then its parent
 
   </script>
 </body>
