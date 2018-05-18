@@ -1,28 +1,16 @@
-document.querySelector('.grid').addEventListener('click',function(e){
+document.querySelector('.grid').addEventListener('mouseover', function(e) { // On mouse over
+  if (e.target.tagName === 'IMG') {
 
-	var howMany = this.querySelectorAll('li').length;
+  	var myElement = document.createElement('div'); // Create an element in memory (not in DOM)
+  	myElement.className = 'preview'; // Give div 'preview' class name
+  	e.target.parentNode.appendChild(myElement); // Put the new div element in the parent (li) of the img being clicked
 
-	if (e.target.tagName === 'IMG') {
+  	var myImg = document.createElement('img'); // Create a new image element
+  	var imgLoc = e.target.src; // get src of image being hovered
+  	myImg.src = imgLoc.substring(0,imgLoc.length-7) + '.jpg'; // get rid of last seven characters of the string from target src, add .jpg back on
+  	myElement.appendChild(myImg); // Add the new image to the div element created earlier
 
-		if (howMany > 1) {
+  	
 
-			var removeTarget = e.target.parentNode; 
-			/* The target of the click is the image, but we 
-			want the parent of the image, the <li> */
-
-			/* So, we have to taget the parent of the <li> (the <ul>) so that 
-			we can use the removeChild() method to remove the <li> */
-			/* It's a circular way of doing things, but that's what he says to do */
-			removeTarget.parentNode.removeChild(removeTarget);
-
-		} else {
-			var photoTitle = e.target.alt;
-	
-			document.querySelector('#art p').innerHTML = "You've picked " + photoTitle;
-
-		}
-	
-	}
-
-
-},false);
+  } // check to see that I clicked on IMG only
+}, false); // click event
