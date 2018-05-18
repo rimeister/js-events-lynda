@@ -15,14 +15,13 @@ document.querySelector('.grid').addEventListener('click',function(e){
 			/* It's a circular way of doing things, but that's what he says to do */
 			removeTarget.parentNode.removeChild(removeTarget);
 
+		} else {
+			var photoTitle = e.target.alt;
+	
+			document.querySelector('#art p').innerHTML = "You've picked " + photoTitle;
+
 		}
 	
-	}
-
-	if (howMany < 3) {
-
-		document.querySelector('#art p').innerHTML = document.querySelector('.grid li img').alt;
-
 	}
 
 
