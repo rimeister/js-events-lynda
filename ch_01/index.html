@@ -60,11 +60,22 @@
 
     document.getElementById("green").addEventListener('click', function(e){
       console.log(e.toElement.alt);
+      e.stopPropagation();
     },false); // 'false' determines whether you capture the event in the capturing phase or the bubbling phase
 
     // Capture phase: Captures the event on parent, then child, then sub-child
     // vs.
     // Bubble phase: Captures the event on the element click, then parent, then its parent
+
+    // From here: https://javascript.info/bubbling-and-capturing
+
+    /*
+    
+      "-- If it’s false (default), then the handler is set on the bubbling phase.
+
+      --If it’s true, then the handler is set on the capturing phase."
+
+    */
 
   </script>
 </body>
