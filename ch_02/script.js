@@ -1,4 +1,6 @@
-document.querySelector('.grid').addEventListener('mouseover', function(e) { // On mouse over
+document.querySelector('.grid').addEventListener('contextmenu', function(e) { // On mouse over
+
+  e.preventDefault();
 
   if (e.target.tagName === 'IMG') {
 
