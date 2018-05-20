@@ -14,8 +14,8 @@ document.querySelector('.grid').addEventListener('mouseover', function(e) { // O
   	e.target.addEventListener('mouseout', function handler(d){ // Mouseout Event listener inside mouseover event listener. Named function 'handler' instead of anaonymous function
   		var myNode = d.target.parentNode.querySelector('div.preview'); // Go to parent node (<li>) then select child div.preview
   		myNode.parentNode.removeChild(myNode); // Remove the node in roundabout way. Guess you could have also done d.target.parentNode.removeNode(myNode)
-		e.target.removeEventListener('mouseout', handler, false); // Remove the event listener for mouseout. Requires the attributes passed into the addEventListener: event, function name, false
-	}, false);
+  		e.target.removeEventListener('mouseout', handler, false); // Remove the event listener for mouseout. Requires the attributes passed into the addEventListener: event, function name, false
+  	}, false);
 
   } // check to see that I clicked on IMG only
 
