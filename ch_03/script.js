@@ -14,6 +14,7 @@ document.querySelector('img.preview').addEventListener('click',function(e){
 	mySpinner.src = 'images/spinner.gif';
 	myOverlay.appendChild(mySpinner);
 
+	// When hi-res image loads, remove mySpinner
 	highRes.addEventListener('load',function(d){
 		mySpinner.parentNode.removeChild(mySpinner);
 	},false);
