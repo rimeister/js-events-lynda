@@ -37,7 +37,7 @@ ul.player li:hover {
 	color: #FCF4DC;
 }
 
-ul.player li#playing {
+ul.player li.playing {
 	background: url(images/media_play_btn.png) no-repeat 8px 7px;
 	background-color: #FCF4DC;
 	color: #2176C7;
@@ -45,7 +45,7 @@ ul.player li#playing {
 	background-position: 9px 4px;
 }
 
-ul.player li#paused {
+ul.player li.paused {
 	background: url(images/media_pause_btn.png) no-repeat 8px 7px;
 	background-color: #666;
 	color: #FFF;
