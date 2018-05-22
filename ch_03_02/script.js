@@ -5,17 +5,30 @@ jukeBox.addEventListener('click', function(e){
 
 	if (songPlaying) {
 
-		if (songPlaying.paused) {
+		if (songName === songPlaying.getAttribute('src')) {
 
-			songPlaying.play();
-			e.target.className = 'playing';
+			if (songPlaying.paused) {
+
+				songPlaying.play();
+				e.target.className = 'playing';
+
+			} else {
+
+				songPlaying.pause();
+				e.target.className = 'paused';
+
+			}
 
 		} else {
 
-			songPlaying.pause();
-			e.target.className = 'paused';
+			songPlaying.src = songName;
+			songPlaying.play();
+			document.querySelector('.playing').className = '';
+			e.target.className = 'playing';
 
 		}
+
+
 
 	} else {
 	
