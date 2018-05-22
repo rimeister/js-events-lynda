@@ -1,29 +1,36 @@
 var jukeBox = document.querySelector('ul.player');
 jukeBox.addEventListener('click', function(e){
 	var songName = e.target.getAttribute('data-src'); // Because data- attribute is custom attribute, we have to use .getAttribute()
-	var songPlaying = document.querySelector('#player');
+	var audioPlayer = document.querySelector('#player');
 
-	if (songPlaying) {
+	if (audioPlayer) {
 
-		if (songName === songPlaying.getAttribute('src')) {
+		if (songName === audioPlayer.getAttribute('src')) {
 
-			if (songPlaying.paused) {
+			if (audioPlayer.paused) {
 
-				songPlaying.play();
+				audioPlayer.play();
 				e.target.className = 'playing';
 
 			} else {
 
-				songPlaying.pause();
+				audioPlayer.pause();
 				e.target.className = 'paused';
 
 			}
 
 		} else {
 
-			songPlaying.src = songName;
-			songPlaying.play();
-			document.querySelector('.playing').className = '';
+			audioPlayer.src = songName;
+			audioPlayer.play();
+
+			if ( document.querySelector('.playing') ) {
+				document.querySelector('.playing').className = '';
+				e.target.className = 'playing';
+			} else {
+				document.querySelector('.paused').className = '';
+			}
+
 			e.target.className = 'playing';
 
 		}
