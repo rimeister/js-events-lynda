@@ -11,10 +11,19 @@ var dragAndDrop	= (function(){
 	document.querySelector('body').addEventListener('drop', moveDrop, false);
 
 	// Functions
+	function resetZ() {
+		var elements = document.querySelectorAll('img');
+		for (var i = elements.length -1; i >= 0; i--) {
+			//console.log(elements.length - i + 10);
+			elements[i].style.zIndex =  5;
+		}
+	}
+
 	function moveStart(e) {
 		whichArt = e.target;
 		myX = e.offsetX === undefined ? e.layerX : e.offsetX; // Quick turnary conditional for browser compatability. If offsetX is undefined, use e.layerX instead.
 		myY = e.offsetY === undefined ? e.layerY : e.offsetY;
+		resetZ(); // Reset z-index of all other elements to 5
 		whichArt.style.zIndex = 10;
 	}
 
